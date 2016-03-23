@@ -1,0 +1,56 @@
+<div layout="vertical" layout-fill>
+  <md-content>
+    <header>
+      <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </header>
+    <div layout="row" ng-repeat="list in vm.lists">
+      <div flex="5">
+        <md-radio-group ng-model="vm.selection">
+          <md-radio-button  value="{{list.id}}" class="md-primary"></md-radio-button>
+        </md-radio-group>
+      </div>
+      <div flex="70">
+        <md-input-container>
+          <label>Title</label>
+          <input ng-model="list.address" >
+        </md-input-container>
+      </div>
+      <div flex="15">
+        <md-button md-no-ink class="md-primary" ng-click="vm.selectionFilter()">Edit</md-button>
+      </div>
+    </div>
+    <!-- <div layout="row">
+      <div flex="5">
+        <md-radio-group>
+          <md-radio-button value="Apple" class="md-primary"></md-radio-button>
+        </md-radio-group>
+      </div>
+      <div flex="70">
+        <md-input-container>
+          <label>Title</label>
+          <input ng-model="user.title">
+        </md-input-container>
+      </div>
+      <div flex="15">
+        Edit
+      </div>
+    </div>
+    <div layout="row">
+      <div flex="5">
+        <md-radio-group>
+          <md-radio-button value="Apple" class="md-primary"></md-radio-button>
+        </md-radio-group>
+      </div>
+      <div flex="70">
+        <md-input-container>
+          <label>Title</label>
+          <input ng-model="user.title">
+        </md-input-container>
+      </div>
+      <div flex="15">
+        Edit
+      </div>
+    </div> -->
+  </md-content>
+
+</div>
