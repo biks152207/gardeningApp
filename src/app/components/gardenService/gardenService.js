@@ -4,8 +4,8 @@
   /** @ngInject */
   function GardenService($http, appUrl){
     var list;
-    this.maintenence = function(){
-      return $http.get(appUrl + 'gartenumaenderung/projects');
+    this.maintenence = function(type){
+      return $http.get(appUrl + type + '/projects');
     }
     this.getGardenById = function(id){
       return $http.get(appUrl + 'project/' + id );

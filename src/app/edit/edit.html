@@ -1,0 +1,106 @@
+<div top></div>
+	<section class="nav">
+		<div class="container">
+			<div class="row">
+				<div class="menu col-md-12">
+					<ul>
+						<li class="col-md-4"><a href="gartenunterhalt.html"><i class="fa fa-angle-left"></i> Zurück</a></li>
+						<li class="col-md-4 title"><strong>Neues Projekt</strong></li>
+						<li class="col-md-4"><a href="#">Speichern</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="form">
+		<div class="container">
+			<div class="row">
+				<form class="form-newproject">
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="">Name</label>
+							<select class="form-control">
+								<option>Name</option>
+								<option>Thomas Müller</option>
+								<option>Niklas Bartels</option>
+								<option>Manuela Ludwig</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="">Vorname</label>
+							<input type="text" class="form-control" id="" ng-model="edit.profile.firstname" placeholder="Vorname">
+						</div>
+						<div class="col-md-4">
+							<label for="">Adresse</label>
+							<input type="text" class="form-control" id="" ng-model="edit.profile.address" placeholder="Adresse">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="">Postleitzahl</label>
+							<input type="text" ng-model="edit.profile.postal_code" class="form-control" id="" placeholder="Postleitzahl">
+						</div>
+						<div class="col-md-4">
+							<label for="">Ort</label>
+							<input type="text" class="form-control" ng-model="edit.profile.place" id="" placeholder="Ort">
+						</div>
+						<div class="col-md-4">
+							<label for="">Telefon <img src="assets/images/icon-phone.png"></label>
+							<input type="text" class="form-control" id="" ng-model="edit.profile.phone" placeholder="Telefon">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="">Email</label>
+							<input type="text" class="form-control" id="" ng-model="edit.profile.mail" placeholder="Email">
+						</div>
+						<div class="col-md-4">
+							<label for="">Ausführungs-zeitpunkt <img src="assets/images/icon-calendar.png"></label>
+							<input type="date" class="form-control" id="" ng-model="edit.profile.time_to_finish" >
+						</div>
+						<div class="col-md-4">
+							<label for="">Arbeitsaufwand</label>
+							<input type="text" ng-model="edit.profile.worker" class="form-control" id="" placeholder="Arbeitsaufwand">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="">Zuständigkeit</label>
+							<input type="text" class="form-control" id="" placeholder="Zuständigkeit">
+						</div>
+						<div class="col-md-4">
+							<label for="">Terminserie</label>
+							<input type="text" class="form-control" id="" placeholder="Terminserie">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-6">
+							<label for="">&nbsp;</label>
+							<textarea name="" id="" ng-model="edit.profile.notice" cols="30" rows="10" class="form-control" placeholder="Weitere Informationen"></textarea>
+						</div>
+						<div class="col-md-6">
+							<label for="">&nbsp;</label>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.305786115521!2d85.31316026442462!3d27.707843482078353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19004c3ac4b5%3A0x583867d356050c8!2sRani+Pokhari!5e0!3m2!1sen!2snp!4v1458802068674" width="100%" height="230" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="">Choose Upload Type:</label>
+							<div class="checkbox"><label><input type="checkbox"><span>Fotos</span></label></div>
+							<div class="checkbox"><label><input type="checkbox"><span>Dateien</span></label></div>
+							<div class="checkbox"><label><input type="checkbox"><span>Sprachmemo</span></label></div>
+						</div>
+						<div class="col-md-8">
+							<div class="post-upload">
+								<span>Drag and Drop Files</span>
+								<i class="fa fa-upload"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 btn-holder"><button type="submit" class="btn btn-green">Submit</button></div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

@@ -30,6 +30,12 @@
               }
             }
           })
+          .state('Gartenumänderung',{
+            url: '/change',
+            controller: 'changeCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'app/gardenMaintenence/gardenMaintenence.html'
+          })
       }
 
 })();

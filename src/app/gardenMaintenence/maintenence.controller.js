@@ -5,14 +5,22 @@
 
     /** @ngInject */
 
-    function Maintenence(GardenService, toastr){
+    function Maintenence(GardenService, toastr, $state){
       var vm = this;
       vm.selection = null;
       vm.selectionFilter = Selection.bind(vm);
+      vm.editor = Editor.bind(vm);
       function list(){
-        GardenService.maintenence().then(function(response){
+        GardenService.maintenence('gartenumaenderung').then(function(response){
           vm.lists = response.data.data.data;
         })
+      }
+
+      function Editor(id){
+        if (!vm.selection){
+          vm.selection = id;
+        }
+        $state.go('edit', {id: vm.selection});
       }
 
       function Selection(){
