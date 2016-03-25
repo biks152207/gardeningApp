@@ -1,61 +1,33 @@
-<div layout="vertical" layout-fill>
 
-  <md-content>
-    <header>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </header>
+	<section class="splashscreen">
+		<div class="container">
+			<div class="row">
+				<div class="logo col-md-12">
+					<img src="assets/images/logo-muller.png" alt="" class="img-responsive">
+				</div>
+			</div>
+			<div class="row">
+				<div class="home-button col-md-12">
+					<ul class="row">
+						<li class="col-md-4"><a class="btn btn-home" href="gartenunterhalt.html">Gartenunterhalt</a></li>
+						<li class="col-md-4"><a class="btn btn-home" href="gartenumanderung.html">Gartenumänderung</a></li>
+						<li class="col-md-4"><a class="btn btn-home" href="erinnerung.html">Erinnerung</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			function setHeight() {
+				windowHeight = $(window).innerHeight();
+				$('.splashscreen').css('min-height', windowHeight);
+			};
+			setHeight();
 
-    <section class="jumbotron">
-      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <!-- <md-button class="md-raised">Button</md-button> -->
-        <md-button class="md-raised md-primary" ng-click="main.trigger('Gartenunterhalt')">Gartenunterhalt</md-button>
-        <!-- <md-button class="md-raised md-primary">Gartenumänderung</md-button>
-        <md-button class="md-raised md-primary">Erinnerung</md-button> -->
-        <!-- <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
-        <md-button class="md-raised md-warn">Warn</md-button>
-        <div class="label">Raised</div> -->
-      </section>
-      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <!-- <md-button class="md-raised">Button</md-button> -->
-        <md-button class="md-raised md-primary" ng-click="main.trigger('Gartenumänderung')">Gartenumänderung</md-button>
-        <!-- <md-button class="md-raised md-primary">Gartenumänderung</md-button>
-        <md-button class="md-raised md-primary">Erinnerung</md-button> -->
-        <!-- <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
-        <md-button class="md-raised md-warn">Warn</md-button>
-        <div class="label">Raised</div> -->
-      </section>
-      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-        <!-- <md-button class="md-raised">Button</md-button> -->
-        <md-button class="md-raised md-primary" ng-click="main.trigger('Erinnerung')">Erinnerung</md-button>
-        <!-- <md-button class="md-raised md-primary">Gartenumänderung</md-button>
-        <md-button class="md-raised md-primary">Erinnerung</md-button> -->
-        <!-- <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
-        <md-button class="md-raised md-warn">Warn</md-button>
-        <div class="label">Raised</div> -->
-      </section>
-      <!-- <h1>'Allo, 'Allo!</h1>
-      <p class="lead">
-        <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-        Always a pleasure scaffolding your apps.
-      </p>
-      <md-button class="md-raised animated infinite" ng-class="main.classAnimation" ng-click="main.showToastr()">Splendid Toastr</md-button>
-      <p>
-        With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-      </p> -->
-    </section>
-
-    <!-- <div class="techs" layout-align="center">
-      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-        <md-card-content>
-          <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-          <h3 class="md-title">{{ awesomeThing.title }}</h3>
-          <p>{{ awesomeThing.description }}</p>
-        </md-card-content>
-        <div class="md-action-buttons">
-          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
-        </div>
-      </md-card>
-    </div> -->
-  </md-content>
-
-</div>
+			$(window).resize(function() {
+				setHeight();
+			});
+		});
+	</script>
