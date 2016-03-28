@@ -1,4 +1,3 @@
-<script src="assets/js/jquery.screwdefaultbuttonsV2.min.js"></script>
 <section class="mainheader">
   <div class="container">
     <div class="row">
@@ -23,6 +22,11 @@
 </section>
 <section class="form">
   <div class="container">
+    <div class="row" ng-if="vm.loading">
+      <div layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
     <div class="row">
       <!-- <div class="post-title col-md-12"><h3>Gartenunterhalt</h3></div>				 -->
       <form class="form-gardenmaintenance">
@@ -95,7 +99,9 @@
         <div class="btn-holder form-group">
           <a href="new-project.html"><i class="fa fa-plus-circle fa-3x"></i></a>
         </div>
+
       </form>
+
     </div>
   </div>
 </div>

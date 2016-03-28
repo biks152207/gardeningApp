@@ -19,6 +19,7 @@
 
           }, 0);
           element.on('change', function(el){
+            console.log(el)
             scope.$apply(function(){
               scope.radioBeautify = el.target.value;
             })

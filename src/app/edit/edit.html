@@ -19,12 +19,7 @@
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Name</label>
-							<select class="form-control">
-								<option>Name</option>
-								<option>Thomas Müller</option>
-								<option>Niklas Bartels</option>
-								<option>Manuela Ludwig</option>
-							</select>
+							<input type="text" class="form-control" ng-model="edit.profile.lastname" placeholder="Name">
 						</div>
 						<div class="col-md-4">
 							<label for="">Vorname</label>
@@ -60,7 +55,10 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Arbeitsaufwand</label>
-							<input type="text" ng-model="edit.profile.worker" class="form-control" id="" placeholder="Arbeitsaufwand">
+							<select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker">
+
+							</select>
+							<!-- <input type="text" ng-model="edit.profile.worker" class="form-control" id="" placeholder="Arbeitsaufwand"> -->
 						</div>
 					</div>
 					<div class="form-group">
@@ -70,7 +68,10 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Terminserie</label>
-							<input type="text" class="form-control" id="" placeholder="Terminserie">
+							{{edit.profile.repeat}}
+							<select class="form-control" name="" ng ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat">
+							</select>
+							<!-- <input type="text" class="form-control" id="" placeholder="Terminserie"> -->
 						</div>
 					</div>
 					<div class="form-group">
@@ -80,24 +81,43 @@
 						</div>
 						<div class="col-md-6">
 							<label for="">&nbsp;</label>
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.305786115521!2d85.31316026442462!3d27.707843482078353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19004c3ac4b5%3A0x583867d356050c8!2sRani+Pokhari!5e0!3m2!1sen!2snp!4v1458802068674" width="100%" height="230" frameborder="0" style="border:0" allowfullscreen></iframe>
+							<div map-lazy-load="https://maps.google.com/maps/api/js">
+							  <ng-map center="{{edit.profile.address}}" zoom="13" >
+
+								</ng-map>
+							</div>
+
+
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-4">
-							<label for="">Choose Upload Type:</label>
-							<div class="checkbox"><label><input type="checkbox"><span>Fotos</span></label></div>
-							<div class="checkbox"><label><input type="checkbox"><span>Dateien</span></label></div>
-							<div class="checkbox"><label><input type="checkbox"><span>Sprachmemo</span></label></div>
+							<div class="" style="position:relative;display:inline-block">
+								<img ngf-thumbnail="vm.file || 'http://www.instagramprivate.gamersden.org/img/icon-user-default.png'">
+								<div class="close" style="position:absolute;right:0px;top:0px;z-index:10;cursor:pointer" ng-click="$file=null;vm.file='http://www.instagramprivate.gamersden.org/img/icon-user-default.png'">
+									X
+								</div>
+							</div>
+							<!-- <label for="">Choose Upload Type:</label>
+							  {{edit.fileType}}
+							<div class="checkbox"><label><input type="checkbox" name="image" ng-model="edit.fileType" ng-value="image"><span>Fotos</span></label></div>
+							<div class="checkbox"><label><input type="checkbox" name="video" ng-model="edit.fileType" ng-value="video"><span>Dateien</span></label></div>
+							<div class="checkbox"><label><input type="checkbox" name="voice" ng-model="edit.fileType" ng-value="voice"><span>Sprachmemo</span></label></div> -->
 						</div>
 						<div class="col-md-8">
-							<div class="post-upload">
-								<span>Drag and Drop Files</span>
+							<div class="post-upload" ngf-select="edit.upload($file)" ng-model="vm.file">
+								<span ngf-drop="edit.upload($file)">Drag and Drop Files</span>
 								<i class="fa fa-upload"></i>
 							</div>
+							<md-progress-linear  ng-show="edit.uploadStatus"></md-progress-linear>
 						</div>
+
 					</div>
-					<div class="col-md-12 btn-holder"><button type="submit" class="btn btn-green">Submit</button></div>
+					<div class="col-md-12 text-center" style="margin-bottom:20px">
+
+					</div>
+
+					<div class="col-md-12 btn-holder"><button type="submit"  class="btn btn-green">Submit</button></div>
 
 				</form>
 			</div>

@@ -8,10 +8,16 @@
     function Maintenence(GardenService, toastr, $state){
       var vm = this;
       vm.selection = null;
+      vm.loading = true;
+      // vm.checked = function(value,obj){
+      //   console.log(value);
+      // }
+      vm.state = $state.current.name;
       vm.selectionFilter = Selection.bind(vm);
       vm.editor = Editor.bind(vm);
       function list(){
-        GardenService.maintenence('gartenumaenderung').then(function(response){
+        GardenService.maintenence(vm.state).then(function(response){
+          vm.loading = false;
           vm.lists = response.data.data.data;
         })
       }

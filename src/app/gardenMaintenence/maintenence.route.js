@@ -6,8 +6,14 @@
       /** @ngInject */
       function gardeningConfig($stateProvider, $urlRouterProvider){
         $stateProvider
-          .state('Gartenunterhalt',{
-            url: '/change',
+          .state('gartenunterhalt',{
+            url: '/gartenunterhalt',
+            controller: 'maintenenceCtrl',
+            controllerAs: 'vm',
+            templateUrl: 'app/gardenMaintenence/gardenMaintenence.html'
+          })
+          .state('gartenumaenderung',{
+            url: '/gartenumaenderung',
             controller: 'maintenenceCtrl',
             controllerAs: 'vm',
             templateUrl: 'app/gardenMaintenence/gardenMaintenence.html'
