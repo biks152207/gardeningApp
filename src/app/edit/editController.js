@@ -1,7 +1,15 @@
 (function(){
   'use strict';
     angular.module('gardeningApp')
-      .controller('editCtrl', Controller);
+      .controller('editCtrl', Controller)
+      .controller('DialogController', function($scope, $mdDialog){
+        $scope.close = function(){
+          $mdDialog.cancel();
+        }
+        $scope.ok = function(){
+          $mdDialog.hide();
+        }
+      })
 
     function Controller(GardenService, $state, toastr, appData, moment, $http, appUrl, lang, $mdDialog){
       var edit = this;
@@ -51,22 +59,28 @@
 
       edit.metData();
 
+      edit.cancel = function(){
+        $mdDialog.cancel();
+      }
+
       edit.imageDelete = function(index, name){
         $mdDialog.show({
-          template: '<md-dialog><md-toolbar><div class="md-toolbar-tools"><h2>Are you sure?</h2> <span flex></span></div></md-toolbar></md-dialog>',
+          controller: 'DialogController',
+          template: '<md-dialog><md-toolbar><div class="md-toolbar-tools"><h2>Bist du sicher?</h2> <span flex></span></div></md-toolbar><md-dialog-content></md-dialog-content><md-dialog-actions layout="row"><md-button ng-click="close()">Cancel</md-button ><md-button ng-click="ok()">Ok</md-button><md-dialog-actions></md-dialog>',
           parent: angular.element(document.body),
           clickOutsideToClose:true,
           fullscreen: true
-        })
-        console.log(index);
-        console.log(edit.profile.resources);
-        console.log(edit.profile.thumbs);
-        edit.profile.resources.splice(index, 1);
-        edit.profile.thumbs.forEach(function(i, t){
-          if (i.thumb.indexOf(name) != -1){
-            edit.profile.thumbs.splice(t, 1);
-            // edit.profile.thumbs.splice(in, 1);
-          }
+        }).then(function(){
+
+          console.log(index);
+
+          edit.profile.resources.splice(index, 1);
+          edit.profile.thumbs.forEach(function(i, t){
+            if (i.name == name){
+              edit.profile.thumbs.splice(t, 1);
+              // edit.profile.thumbs.splice(in, 1);
+            }
+          })
         })
       }
 

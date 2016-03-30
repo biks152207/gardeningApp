@@ -18,13 +18,6 @@
       vm.disableScroll = false;
       vm.loading = true;
       vm.getList = list.bind(vm);
-      vm.checked = function(value){
-        console.log(value);
-        // return value.status == 1;
-      }
-      vm.change = function(value){
-        console.log(value);
-      }
       // vm.checked = function(value,obj){
       //   console.log(value);
       // }
@@ -34,6 +27,14 @@
         }else{
           $state.go('addGartenunterhalt');
           }
+      }
+
+      vm.goDone = function(){
+        if (type == '/gartenumaenderung'){
+          $state.go('doneGartenumaenderung')
+        }else{
+          $state.go('doneGartenunterhalt')
+        }
       }
       vm.state = $state.current.name;
       vm.selectionFilter = Selection.bind(vm);

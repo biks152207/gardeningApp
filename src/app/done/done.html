@@ -1,0 +1,81 @@
+<section class="mainheader">
+  <div class="container">
+    <div class="row">
+      <div class="logo inside col-md-12">
+        <a href="index.html"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="nav">
+  <div class="container">
+    <div class="row">
+      <div class="menu col-md-12">
+        <ul>
+          <li class="col-md-4"><a href="/"><i class="fa fa-angle-left"></i> Zurück</a></li>
+          <li class="col-md-4 title"><strong>Erledigte Arbeiten</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="search">
+  <div class="container">
+    <div class="row">
+      <form action="" class="form-inline form-search col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <input ng-model="searchTerm" type="text" class="form-control" id="" placeholder="Suche" ng-change="done.search(searchTerm)">
+          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</section>
+<section class="form white-bg">
+  <div class="container">
+    <div class="row">
+
+      <form class="form-gardenmaintenance">
+        <div ng-repeat="list in done.lists" >
+        <div class="post-title col-md-12"><h3>{{list.year}}</h3></div>
+        <div class="form-group" ng-repeat="l in list.projects">
+          <div class="post-icons col-md-1 col-sm-2 col-xs-2">
+            <input type="checkbox" ng-checked="l.status==1"   radio-beautify="l" data="list.projects" name="maintenance" id="maintenance" value="{{l}}" >
+          </div>
+          <div class="col-md-10 col-sm-10 col-xs-10">
+            <textarea name="maintenancedetails" id="maintenancedetails" class="form-control" >{{l.firstname + ' ' + l.lastname + ',' + l.address}}</textarea>
+          </div>
+        </div>
+        <hr class="col-md-offset-1 col-md-10">
+      </div>
+        <!-- <div class="post-title col-md-12"><h3>Erledigte Arbeiten 2017</h3></div> -->
+        <!-- <div class="form-group">
+          <div class="post-icons col-md-1 col-sm-2 col-xs-2">
+            <input type="radio" name="maintenance" id="" value="" >
+          </div>
+          <div class="col-md-10 col-sm-10 col-xs-10">
+            <textarea name="maintenancedetails" id="" class="form-control"></textarea>
+          </div>
+        </div> -->
+        <!-- <div class="form-group">
+          <div class="post-icons col-md-1 col-sm-2 col-xs-2">
+            <input type="radio" name="maintenance" id="" value="" >
+          </div>
+          <div class="col-md-10 col-sm-10 col-xs-10">
+            <textarea name="maintenancedetails" id="" class="form-control"></textarea>
+          </div>
+        </div> -->
+        <!-- <div class="form-group">
+          <div class="post-icons col-md-1 col-sm-2 col-xs-2">
+            <input type="radio" name="maintenance" id="" value="" >
+          </div>
+          <div class="col-md-10 col-sm-10 col-xs-10">
+            <textarea name="maintenancedetails" id="" class="form-control"></textarea>
+          </div>
+        </div> -->
+      </form>
+    </div>
+  </div>
+</div>
+</section>

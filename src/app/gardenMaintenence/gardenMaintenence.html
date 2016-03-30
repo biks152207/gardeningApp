@@ -15,7 +15,7 @@
           <li class="col-md-4"><a onClick="window.history.go(-1); return false;"><i class="fa fa-angle-left"></i> Zurück</a></li>
           <li class="col-md-4 title" ng-if="vm.state=='gartenunterhalt'"><strong>Gartenunterhalt</strong></li>
           <li class="col-md-4 title" ng-if="vm.state=='gartenumaenderung'"><strong>Gartenumänderung</strong></li>
-          <li class="col-md-4"><a href="erledigte.html">Erledigte</a></li>
+          <li class="col-md-4"><a ng-click="vm.goDone()">Erledigte</a></li>
         </ul>
       </div>
     </div>

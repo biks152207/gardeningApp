@@ -19,6 +19,10 @@
     this.metaData = function(){
       return $http.get(appUrl + 'project/meta-data')
     }
+
+    this.getDoneList = function(type){
+      return $http.get(appUrl + type + '/projects/done');
+    }
     this.uploader = function(file){
       return Upload.upload({
         url: appUrl + 'file/upload',

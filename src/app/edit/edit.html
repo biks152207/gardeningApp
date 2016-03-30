@@ -136,7 +136,7 @@
 						<div class="col-md-2" ng-repeat="l in edit.profile.thumbs track by $index">
 							<div class="" style="position:relative;">
 								<img ng-src="{{l.thumb}}"  height="100px" width="100px">
-								<span style="postion:absolute;top:0px;right:0px;z-index:2" ng-click="edit.imageDelete($index, l.thumb)">
+								<span style="postion:absolute;top:0px;right:0px;z-index:2" ng-click="edit.imageDelete($index, l.name)">
                   X
 								</span>
 							</div>

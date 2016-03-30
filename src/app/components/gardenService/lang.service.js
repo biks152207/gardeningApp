@@ -20,7 +20,8 @@
           invalid_email: 'Ungültige E-Mail Adresse',
           enter_email: 'Bitte E-Mail Adresse eingeben',
           add_success: 'Erfolgreich hinzugefügt',
-          update_success: 'Erfolgreich aktualisiert'
+          update_success: 'Erfolgreich aktualisiert',
+          are_you_sure: 'are you sure?'
 
         }
       }
