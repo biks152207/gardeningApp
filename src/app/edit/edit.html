@@ -1,62 +1,97 @@
-<div top></div>
-	<section class="nav">
-		<div class="container">
-			<div class="row">
-				<div class="menu col-md-12">
-					<ul>
-						<li class="col-md-4"><a href="gartenunterhalt.html"><i class="fa fa-angle-left"></i> Zurück</a></li>
-						<li class="col-md-4 title"><strong>Neues Projekt</strong></li>
-						<li class="col-md-4"><a href="#">Speichern</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
+<section class="mainheader">
+  <div class="container">
+    <div class="row">
+      <div class="logo inside col-md-12">
+        <a onClick="window.history.go(-2); return false;"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="nav">
+  <div class="container">
+    <div class="row">
+      <div class="menu col-md-12">
+        <ul>
+          <li class="col-md-4"><a href="/"><i class="fa fa-angle-left"></i> Zurück</a></li>
+          <li class="col-md-4 title"><strong>{{edit.header}}</strong></li>
+          <li class="col-md-4"><a href="erledigte.html">Erledigte</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 	<section class="form">
 		<div class="container">
 			<div class="row">
-				<form class="form-newproject">
+				<form class="form-newproject" name="postForm" id="postForm" novalidate="" ng-submit="edit.submit(postForm.$valid, postForm)">
 					<div class="form-group">
-						<div class="col-md-4">
+						<div class="col-md-4" >
 							<label for="">Name</label>
-							<input type="text" class="form-control" ng-model="edit.profile.lastname" placeholder="Name">
+							<input type="text" name="lastName" class="form-control" ng-model="edit.profile.lastname" placeholder="Name" required ng-minlength="3" ng-maxlength="20">
+							<span class="text-danger" ng-if="postForm.lastName.$invalid && postForm.$submitted">
+								<p ng-if="postForm.lastName.$error.required">{{edit.lang.enter_name}}</p>
+								<p ng-if="postForm.lastName.$error.minlength">{{edit.lang.less_character}}</p>
+								<p ng-if="postForm.lastName.$error.minlength">{{edit.lang.more_character}}</p>
+							</span>
 						</div>
 						<div class="col-md-4">
 							<label for="">Vorname</label>
-							<input type="text" class="form-control" id="" ng-model="edit.profile.firstname" placeholder="Vorname">
+							<input type="text" name="firstName" class="form-control" id="" ng-model="edit.profile.firstname" placeholder="Vorname" required ng-minlength="3" ng-maxlength="20">
+							<span class="text-danger" ng-if="postForm.firstName.$invalid && postForm.$submitted">
+								<p ng-if="postForm.firstName.$error.required">{{edit.lang.enter_first}}</p>
+								<p ng-if="postForm.firstName.$error.minlength">{{edit.lang.less_character}}</p>
+								<p ng-if="postForm.firstName.$error.minlength">{{edit.lang.more_character}}</p>
+							</span>
 						</div>
 						<div class="col-md-4">
 							<label for="">Adresse</label>
-							<input type="text" class="form-control" id="" ng-model="edit.profile.address" placeholder="Adresse">
+							<input type="text" class="form-control" name="address" required id="" ng-model="edit.profile.address" placeholder="Adresse">
+							<span class="text-danger" ng-if="postForm.address.$invalid && postForm.$submitted">
+								<p ng-if="postForm.address.$error.required">{{edit.lang.enter_address}}</p>
+							</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Postleitzahl</label>
-							<input type="text" ng-model="edit.profile.postal_code" class="form-control" id="" placeholder="Postleitzahl">
+							<input type="text" ng-model="edit.profile.postal_code" required name="postal_code" ng-pattern="/^\d+$/" class="form-control" id="" placeholder="Postleitzahl">
+							<span class="text-danger" ng-if="postForm.postal_code.$invalid && postForm.$submitted">
+								<p ng-if="postForm.postal_code.$error.pattern">{{edit.lang.invalid_postal}}</p>
+								<p ng-if="postForm.postal_code.$error.required">{{edit.lang.enter_postal}}</p>
+							</span>
 						</div>
 						<div class="col-md-4">
 							<label for="">Ort</label>
-							<input type="text" class="form-control" ng-model="edit.profile.place" id="" placeholder="Ort">
+							<input type="text" name="place" class="form-control" ng-model="edit.profile.place" id="" placeholder="Ort" ng-maxlength="20">
+							<span class="text-danger" ng-if="postForm.place.$invalid && postForm.$submitted">
+								<p ng-if="postForm.place.$error.maxlength">{{edit.lang.more_character}}</p>
+							</span>
 						</div>
 						<div class="col-md-4">
 							<label for="">Telefon <img src="assets/images/icon-phone.png"></label>
-							<input type="text" class="form-control" id="" ng-model="edit.profile.phone" placeholder="Telefon">
+							<input type="text" name="telephone" class="form-control"  required id="" ng-model="edit.profile.phone" placeholder="Telefon">
+							<span class="text-danger" ng-if="postForm.telephone.$invalid && postForm.$submitted">
+								<p ng-if="postForm.telephone.$error.required">{{edit.lang.enter_phone}}</p>
+							</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Email</label>
-							<input type="text" class="form-control" id="" ng-model="edit.profile.mail" placeholder="Email">
+							<input type="text" name="email" ng-pattern="/^[a-zA-Z][-.\w]+\@[-\w]+(?:\.[a-z]+)?\.[a-z]{2,}/" required class="form-control" id="" ng-model="edit.profile.mail" placeholder="Email">
+							<span class="text-danger" ng-if="postForm.email.$invalid && postForm.$submitted">
+								<p ng-if="postForm.email.$error.pattern">{{edit.lang.invalid_email}}</p>
+								<p ng-if="postForm.email.$error.required">{{edit.lang.enter_email}}</p>
+							</span>
 						</div>
 						<div class="col-md-4">
-							<label for="">Ausführungs-zeitpunkt <img src="assets/images/icon-calendar.png"></label>
-							<input type="date" class="form-control" id="" ng-model="edit.profile.time_to_finish" >
+							<label for="">Ausführungs-zeitpunkt </label>
+							<md-datepicker   ng-model="edit.profile.execution_time" md-placeholder="Enter date"></md-datepicker>
 						</div>
 						<div class="col-md-4">
 							<label for="">Arbeitsaufwand</label>
 							<select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker">
-
+								<option value="">Select</option>
 							</select>
 							<!-- <input type="text" ng-model="edit.profile.worker" class="form-control" id="" placeholder="Arbeitsaufwand"> -->
 						</div>
@@ -68,12 +103,19 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Terminserie</label>
-							{{edit.profile.repeat}}
-							<select class="form-control" name="" ng ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat">
+							<select class="form-control" name=""  ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat">
+								<option value="">Select</option>
 							</select>
-							<!-- <input type="text" class="form-control" id="" placeholder="Terminserie"> -->
 						</div>
+						<!-- <div class="col-md-4">
+							<label for="">Type</label>
+							<select class="form-control" name=""  ng-model="edit.profile.type">
+								<option value="gartenunterhalt">Gartenunterhalt</option>
+								<option value="gartenumaenderung">Gartenumänderung</option>
+							</select>
+						</div> -->
 					</div>
+
 					<div class="form-group">
 						<div class="col-md-6">
 							<label for="">&nbsp;</label>
@@ -88,6 +130,16 @@
 							</div>
 
 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2" ng-repeat="l in edit.profile.thumbs track by $index">
+							<div class="" style="position:relative;">
+								<img ng-src="{{l.thumb}}"  height="100px" width="100px">
+								<span style="postion:absolute;top:0px;right:0px;z-index:2" ng-click="edit.imageDelete($index, l.thumb)">
+                  X
+								</span>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -121,6 +173,17 @@
 
 				</form>
 			</div>
+			<!-- <div class="row">
+				<div class="col-md-12">
+					{{edit.profile.resources}}
+				</div>
+			</div> -->
 		</div>
 	</div>
 </section>
+<style>
+
+	.md-datepicker-calendar-pane.md-pane-open{
+		background: #fff !important;
+	}
+</style>

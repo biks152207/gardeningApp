@@ -5,28 +5,62 @@
 
     /** @ngInject */
 
-    function Maintenence(GardenService, toastr, $state){
+    function Maintenence(GardenService, toastr, $state, $location, lang){
       var vm = this;
+      var page = 100;
+      vm.lists = [];
+      vm.Infiniteloading = true;
+      var count = 0;
+      // var pageLimit = null;
+      var location = $location.$$absUrl
+      var type = location.substring(location.lastIndexOf('/'),location.length )
       vm.selection = null;
+      vm.disableScroll = false;
       vm.loading = true;
+      vm.getList = list.bind(vm);
+      vm.checked = function(value){
+        console.log(value);
+        // return value.status == 1;
+      }
+      vm.change = function(value){
+        console.log(value);
+      }
       // vm.checked = function(value,obj){
       //   console.log(value);
       // }
+      vm.addGarden = function(){
+        if (type == '/gartenumaenderung'){
+          $state.go('addGartenumaenderung')
+        }else{
+          $state.go('addGartenunterhalt');
+          }
+      }
       vm.state = $state.current.name;
       vm.selectionFilter = Selection.bind(vm);
       vm.editor = Editor.bind(vm);
       function list(){
-        GardenService.maintenence(vm.state).then(function(response){
-          vm.loading = false;
-          vm.lists = response.data.data.data;
-        })
+        if (vm.Infiniteloading){
+          vm.Infiniteloading = false;
+          GardenService.maintenence(vm.state, count).then(function(response){
+            page = response.data.data.last_page;
+            count++;
+            if (vm.count == page){
+              vm.Infiniteloading = false;
+            }else{
+              vm.lists = vm.lists.concat(response.data.data.data);
+              vm.Infiniteloading = true;
+            }
+            vm.loading = false;
+          })
+        }
+
       }
 
       function Editor(id){
         if (!vm.selection){
           vm.selection = id;
         }
-        $state.go('edit', {id: vm.selection});
+        $location.url(type + '/' + id);
       }
 
       function Selection(){
@@ -39,11 +73,12 @@
           }
           return;
         }
-        toastr.info('Please select the garden');
+        toastr.info(lang.get().select_garden);
 
       }
+      vm.getList();
 
-      list();
+      // list();
     }
 
 
