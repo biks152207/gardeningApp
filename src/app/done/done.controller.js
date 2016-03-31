@@ -6,6 +6,7 @@
     function Done(appData, GardenService){
       var done = this;
       done.lists = [];
+      done.loading = false;
       done.getList = Getlist.bind(done);
       done.search = Filter.bind(done);
       // console.log(appData);
@@ -22,23 +23,33 @@
 
       function Filter(searchTerm){
         if (searchTerm){
-          // done.lists.filter(function(data){
-          //   var condition1 = false;
-          //   data.projects.filter(function(i){
-          //     // console.log(i);
-          //     var condition2 = false;
-          //     console.log(i.lastname.toLowerCase().indexOf(searchTerm));
-          //     if (i.lastname.toLowerCase().indexOf(searchTerm) != -1){
-          //       console.log('1');
-          //       condition2 = true;
-          //     }
-          //
-          //     return condition2;
-          //
-          //   })
-          // })
+          done.loading = true;
+          done.lists.filter(function(data){
+              var obj = data.projects.filter(function(i){
+                // console.log(i);
+                var condition2 = false;
+                console.log(i.lastname.toLowerCase().indexOf(searchTerm));
+                if (i.lastname.toLowerCase().indexOf(searchTerm) != -1){
+                  console.log('1');
+                  condition2 = true;
+                }
+                if (i.firstname.toLowerCase().indexOf(searchTerm) != -1){
+                  console.log('1');
+                  condition2 = true;
+                }
+                if (i.address.toLowerCase().indexOf(searchTerm) != -1){
+                  condition2 = true;
+                }
+
+                return condition2;
+
+              })
+            data.projects = obj;
+          })
+          done.loading = false;
         }else{
-          // done.lists = done.oldValue;
+          done.lists = JSON.parse(JSON.stringify(done.oldValue));
+          done.loading = false;
         }
       }
     }
