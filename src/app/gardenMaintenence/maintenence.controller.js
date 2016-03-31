@@ -7,10 +7,9 @@
 
     function Maintenence(GardenService, toastr, $state, $location, lang){
       var vm = this;
-      var page = 100;
       vm.lists = [];
-      vm.Infiniteloading = true;
       var count = 0;
+      vm.Infiniteloading = true;
       // var pageLimit = null;
       var location = $location.$$absUrl
       var type = location.substring(location.lastIndexOf('/'),location.length )
@@ -43,14 +42,15 @@
         if (vm.Infiniteloading){
           vm.Infiniteloading = false;
           GardenService.maintenence(vm.state, count).then(function(response){
-            page = response.data.data.last_page;
-            count++;
-            if (vm.count == page){
+            if (!response.data.data.next_page_url){
               vm.Infiniteloading = false;
+              console.log('ere');
+
             }else{
-              vm.lists = vm.lists.concat(response.data.data.data);
+              count++;
               vm.Infiniteloading = true;
             }
+            vm.lists = vm.lists.concat(response.data.data.data);
             vm.loading = false;
           })
         }

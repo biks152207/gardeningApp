@@ -15,7 +15,7 @@
     $locationProvider.html5Mode(true);
     toastrConfig.timeOut = 3000;
     toastrConfig.positionClass = 'toast-top-right';
-    toastrConfig.preventDuplicates = true;
+    toastrConfig.preventDuplicates = false;
     toastrConfig.progressBar = true;
     // uiGmapGoogleMapApiProvider.configure({
     //   china: true
