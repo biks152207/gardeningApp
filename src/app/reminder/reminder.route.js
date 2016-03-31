@@ -11,6 +11,13 @@
           controllerAs: 'remind',
           templateUrl: 'app/reminder/reminder.html'
         })
+        .state('reminder-done',{
+          url: '/reminder/done',
+          controller: 'reminderDoneCtrl',
+          controllerAs: 'done',
+          templateUrl: 'app/reminder/done.html'
+        })
+
     }
 
 })();

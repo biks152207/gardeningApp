@@ -16,7 +16,7 @@
          }
       });
 
-    function Remind($http, appUrl, lang, toastr, $scope){
+    function Remind($http, appUrl, lang, toastr, $scope, $state){
       var remind = this;
       remind.lists = [];
       remind.modalclose = null;
@@ -25,6 +25,10 @@
       remind.Infiniteloading = true;
       remind.getList = GetList.bind(remind);
       remind.submit = Post.bind(remind);
+
+      remind.goToDone = function(){
+        $state.go('reminder-done');
+      }
 
       function GetList(){
         if (remind.Infiniteloading){
@@ -51,6 +55,7 @@
           $http.post(appUrl + 'reminder', {title: data}).then(function(Data){
             if (Data.status == 200){
               remind.modalclose();
+              remind.lists.unshift({title: data, status: 0})
               toastr.info(lang.get().add_success);
             }
           }, function(err){

@@ -30,6 +30,7 @@
             }
             element.on('change', function(el){
               var url = null;
+              console.log(el);
               var obj = JSON.parse(el.target.value);
               if (obj.status == 0){
                 url = appUrl + 'reminder/' + obj.id + '/set-status/' + 1;

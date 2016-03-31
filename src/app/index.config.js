@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, $locationProvider) {
+  function config($logProvider, toastrConfig,  $locationProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -17,6 +17,8 @@
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = false;
     toastrConfig.progressBar = true;
+    $locationProvider.html5Mode(false);
+    $locationProvider.hashPrefix('!');
     // uiGmapGoogleMapApiProvider.configure({
     //   china: true
     // })

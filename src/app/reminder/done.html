@@ -1,0 +1,46 @@
+<section class="mainheader">
+  <div class="container">
+    <div class="row">
+      <div class="logo inside col-md-12">
+        <a href="index.html"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="nav">
+  <div class="container">
+    <div class="row">
+      <div class="menu col-md-12">
+        <ul>
+          <li class="col-md-4"><a href="/"><i class="fa fa-angle-left"></i> Zurück</a></li>
+          <li class="col-md-4 title"><strong>Erinnerung</strong></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="form">
+  <div class="container">
+    <div class="row" ng-if="done.loading">
+      <div layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+    </div>
+    <div class="row">
+      <!-- <div class="post-title col-md-12"><h3>Gartenunterhalt</h3></div>				 -->
+      <form class="form-erinnerung">
+        <div class="form-group" ng-repeat="(key, list) in done.lists" infinite-scroll="done.getList()" infinite-scroll-distance="3">
+          <div class="post-icons col-md-1 col-sm-1 col-xs-2">
+            <input type="checkbox" name="maintenance" id="maintenance" radio-check="list" ng-checked="list.status==1" data="done.lists" value="{{list}}" >
+          </div>
+          <div class="col-md-10 col-sm-10 col-xs-10">
+            <input type="text" text="" ng-model="list.title" disabled placeholder="Erinnerung" class="form-control">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+</section>

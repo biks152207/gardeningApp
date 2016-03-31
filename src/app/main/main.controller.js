@@ -14,6 +14,9 @@
     vm.creationDate = 1458543673656;
     vm.showToastr = showToastr;
     vm.trigger = Trigger.bind(vm);
+    vm.goToReminder = function(){
+      $state.go('reminder');
+    }
     activate();
 
     function activate() {
