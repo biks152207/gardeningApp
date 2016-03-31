@@ -62,6 +62,13 @@
       edit.cancel = function(){
         $mdDialog.cancel();
       }
+      edit.goDone = function(){
+        if (appData.type == 'gartenumaenderung'){
+          $state.go('doneGartenumaenderung')
+        }else{
+          $state.go('doneGartenunterhalt')
+        }
+      }
 
       edit.imageDelete = function(index, name){
         $mdDialog.show({
