@@ -90,19 +90,20 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Arbeitsaufwand</label>
-							<select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker">
-								<option value="">Select</option>
-							</select>
-							<!-- <input type="text" ng-model="edit.profile.worker" class="form-control" id="" placeholder="Arbeitsaufwand"> -->
+              <!-- <input type="text" name="name" ng-model="edit.profile.time_to_finish"> -->
+
+							<input type="text" ng-model="edit.profile.time_to_finish" class="form-control" id="" placeholder="Arbeitsaufwand">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Zuständigkeit</label>
-							<input type="text" class="form-control" id="" placeholder="Zuständigkeit">
-						</div>
+              <select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker">
+                <option value="">Select</option>
+              </select>
+            </div>
 						<div class="col-md-4">
-							<label for="">Terminserie</label>
+							<label for="">Wiederholen</label>
 							<select class="form-control" name=""  ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat">
 								<option value="">Select</option>
 							</select>
@@ -118,7 +119,7 @@
 
 					<div class="form-group">
 						<div class="col-md-6">
-							<label for="">&nbsp;</label>
+							<label for="">Notiz</label>
 							<textarea name="" id="" ng-model="edit.profile.notice" cols="30" rows="15" class="form-control" placeholder="Weitere Informationen"></textarea>
 						</div>
 						<div class="col-md-6">
