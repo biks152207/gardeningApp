@@ -12,7 +12,7 @@
     <div class="row">
       <div class="menu col-md-12">
         <ul>
-          <li class="col-md-4"><a href="/"><i class="fa fa-angle-left"></i> Zurück</a></li>
+          <li class="col-md-4" style="cursor:pointer"><a href="/"><i class="fa fa-angle-left"></i> Zurück</a></li>
           <li class="col-md-4 title"><strong>Erledigte Arbeiten</strong></li>
         </ul>
       </div>
@@ -50,7 +50,7 @@
             <input type="checkbox" ng-checked="l.status==1"   radio-beautify="l" data="list.projects" name="maintenance" id="maintenance" value="{{l}}" >
           </div>
           <div class="col-md-10 col-sm-10 col-xs-10">
-            <textarea name="maintenancedetails" id="maintenancedetails" class="form-control" >{{l.firstname + ' ' + l.lastname + ',' + l.address}}</textarea>
+            <textarea name="maintenancedetails" id="maintenancedetails" disabled class="form-control" >{{l.firstname + ' ' + l.lastname + ',' + l.address}}</textarea>
           </div>
         </div>
         <hr class="col-md-offset-1 col-md-10">

@@ -28,16 +28,16 @@
               var obj = data.projects.filter(function(i){
                 // console.log(i);
                 var condition2 = false;
-                console.log(i.lastname.toLowerCase().indexOf(searchTerm));
-                if (i.lastname.toLowerCase().indexOf(searchTerm) != -1){
+                console.log(i.lastname.toLowerCase().indexOf(searchTerm.toLowerCase()));
+                if (i.lastname.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
                   console.log('1');
                   condition2 = true;
                 }
-                if (i.firstname.toLowerCase().indexOf(searchTerm) != -1){
+                if (i.firstname.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
                   console.log('1');
                   condition2 = true;
                 }
-                if (i.address.toLowerCase().indexOf(searchTerm) != -1){
+                if (i.address.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
                   condition2 = true;
                 }
 
