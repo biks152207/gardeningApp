@@ -23,9 +23,10 @@
 </section>
 <section class="form">
   <div class="container">
-    <div class="row" ng-if="vm.loading">
-      <div layout="row" layout-sm="column" layout-align="space-around">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <div class="row" ng-if="vm.loading" >
+      <div class="col-md-12" style="text-align:center;">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x">
+        </i>
       </div>
     </div>
     <div class="row">
@@ -37,7 +38,7 @@
             <input type="checkbox" ng-model="selection" ng-checked="list.status==1"   radio-beautify="list" data="vm.lists" id="maintenance" value="{{list}}">
           </div>
           <div class="col-md-10 col-sm-10 col-xs-8">
-            <textarea name="maintenancedetails" id="maintenancedetails" class="form-control" disabled="disabled">{{list.firstname + ' ' + list.lastname + ',' + list.address}}</textarea>
+            <textarea name="maintenancedetails" disabled id="maintenancedetails" class="form-control" disabled="disabled">{{list.firstname + ' ' + list.lastname + ',' + list.address}}</textarea>
           </div>
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
             <img src="assets/images/icon-edit.png" alt="" class="img-responsive" ng-click="vm.editor(list.id)">
@@ -98,7 +99,13 @@
             <img src="assets/images/icon-edit.png" alt="" class="img-responsive">
           </div>
         </div> -->
-        <div class="btn-holder form-group" ng-if="!vm.loading">
+        <div class="btn-holder form-group" ng-if="!vm.loading" style="  position: fixed;
+            bottom: 0px;
+            width: 100%;
+            left: 0px;
+            background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+            margin-bottom: 0px;
+            padding-top: 10px;">
           <a ng-click="vm.addGarden()"><i class="fa fa-plus-circle fa-3x"></i></a>
         </div>
 
@@ -116,5 +123,8 @@
 <style >
   .toastClass{
     background-color: green;
+  }
+  .md-progress-circular{
+    margin: 0 auto;
   }
 </style>

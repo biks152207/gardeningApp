@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="logo inside col-md-12">
-        <a href="index.html"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
+        <a href="/"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
       </div>
     </div>
   </div>
@@ -22,11 +22,13 @@
 </section>
 <section class="form">
   <div class="container">
-    <div class="row" ng-if="remind.loading">
-      <div layout="row" layout-sm="column" layout-align="space-around">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    <div class="row" ng-if="remind.loading" >
+      <div class="col-md-12" style="text-align:center;">
+        <i class="fa fa-circle-o-notch fa-spin fa-3x">
+        </i>
       </div>
     </div>
+
     <div class="row">
       <!-- <div class="post-title col-md-12"><h3>Gartenunterhalt</h3></div>				 -->
       <form class="form-erinnerung">
@@ -40,7 +42,13 @@
         </div>
 
 
-        <div class="btn-holder form-group">
+        <div class="btn-holder form-group" style="  position: fixed;
+            bottom: 0px;
+            width: 100%;
+            left: 0px;
+            background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+            margin-bottom: 0px;
+            padding-top: 10px;">
           <button type="button" class="btn btn-modal" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle fa-3x"></i></button>
         </div>
       </form>

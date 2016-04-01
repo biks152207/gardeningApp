@@ -119,7 +119,7 @@
 					<div class="form-group">
 						<div class="col-md-6">
 							<label for="">&nbsp;</label>
-							<textarea name="" id="" ng-model="edit.profile.notice" cols="30" rows="10" class="form-control" placeholder="Weitere Informationen"></textarea>
+							<textarea name="" id="" ng-model="edit.profile.notice" cols="30" rows="15" class="form-control" placeholder="Weitere Informationen"></textarea>
 						</div>
 						<div class="col-md-6">
 							<label for="">&nbsp;</label>
@@ -132,20 +132,19 @@
 
 						</div>
 					</div>
+
 					<div class="form-group">
-						<div class="col-md-2" ng-repeat="l in edit.profile.thumbs track by $index">
-							<div class="" style="position:relative;">
-								<img ng-src="{{l.thumb}}"  height="100px" width="100px">
-								<span style="postion:absolute;top:0px;right:0px;z-index:2" ng-click="edit.imageDelete($index, l.name)">
-                  X
-								</span>
+
+						<div class="col-md-10">
+							<div class="post-upload" ngf-select="edit.upload($file)" ng-model="vm.file" style="cursor:pointer">
+								<span ngf-drop="edit.upload($file)">Drag and Drop Files</span>
+								<i class="fa fa-upload"></i>
 							</div>
+							<md-progress-linear  ng-show="edit.uploadStatus"></md-progress-linear>
 						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-4">
+            <div class="col-md-2">
 							<div class="" style="position:relative;display:inline-block">
-								<img ngf-thumbnail="vm.file || 'http://www.instagramprivate.gamersden.org/img/icon-user-default.png'">
+								<img ngf-thumbnail="vm.file || 'http://www.instagramprivate.gamersden.org/img/icon-user-default.png'" class="img-responsive">
 								<div class="close" style="position:absolute;right:0px;top:0px;z-index:10;cursor:pointer" ng-click="$file=null;vm.file='http://www.instagramprivate.gamersden.org/img/icon-user-default.png'">
 									X
 								</div>
@@ -156,14 +155,17 @@
 							<div class="checkbox"><label><input type="checkbox" name="video" ng-model="edit.fileType" ng-value="video"><span>Dateien</span></label></div>
 							<div class="checkbox"><label><input type="checkbox" name="voice" ng-model="edit.fileType" ng-value="voice"><span>Sprachmemo</span></label></div> -->
 						</div>
-						<div class="col-md-8">
-							<div class="post-upload" ngf-select="edit.upload($file)" ng-model="vm.file">
-								<span ngf-drop="edit.upload($file)">Drag and Drop Files</span>
-								<i class="fa fa-upload"></i>
-							</div>
-							<md-progress-linear  ng-show="edit.uploadStatus"></md-progress-linear>
-						</div>
 
+					</div>
+          <div class="form-group">
+						<div class="col-md-2" ng-repeat="l in edit.profile.thumbs track by $index">
+							<div class="" style="position:relative;">
+								<img ng-src="{{l.thumb}}"  height="100px" width="100px">
+								<span style="postion:absolute;top:0px;right:0px;z-index:2; position:absolute" ng-click="edit.imageDelete($index, l.name)">
+                  X
+								</span>
+							</div>
+						</div>
 					</div>
 					<div class="col-md-12 text-center" style="margin-bottom:20px">
 
