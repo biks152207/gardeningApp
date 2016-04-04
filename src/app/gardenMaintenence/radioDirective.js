@@ -14,9 +14,9 @@
           link: function(scope,element, attr, ngModel){
             $timeout(function () {
               element.screwDefaultButtons({
-                image: 'url("assets/images/radio-2.png")',
+                image: 'url("assets/images/radio-1-checked.png")',
                 width: 32,
-                height: 33
+                height: 34
               });
 
             }, 0);

@@ -34,7 +34,8 @@
       <form class="form-erinnerung">
         <div class="form-group" ng-repeat="list in remind.lists track by $index" infinite-scroll="remind.getList()"  infinite-scroll-distance="3">
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
-            <input type="checkbox" radio-check="list" ng-checked="list.status==1" data="remind.lists" name="maintenance" id="maintenance" value="{{list}}" >
+
+            <input type="checkbox" disabled="disabled"  radio-check="list"  ng-checked="list.status==1" data="remind.lists" name="maintenance" id="maintenance" value="{{list}}" >
           </div>
           <div class="col-md-10 col-sm-11 col-xs-10">
             <input type="text" text="" placeholder="Erinnerung" ng-model="list.title" class="form-control">
@@ -82,3 +83,6 @@
   </div>
 </div>
 </div>
+<style >
+
+</style>

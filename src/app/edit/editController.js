@@ -14,7 +14,7 @@
     function Controller(GardenService, $state, toastr, appData, moment, $http, appUrl, lang, $mdDialog){
       var edit = this;
       edit.profile = appData.data;
-      edit.profile.time_to_finish = Number(edit.profile.time_to_finish)
+
       edit.lang = lang.get();
       if (appData.type == 'gartenumaenderung'){
         edit.header = 'Gartenumänderung';
@@ -23,6 +23,9 @@
       }
       if (edit.profile && edit.profile.type){
         delete edit.profile.type;
+      }
+      if ( edit.profile && edit.profile.time_to_finish){
+        edit.profile.time_to_finish = Number(edit.profile.time_to_finish)
       }
       if (edit.profile && edit.profile.execution_time){
         edit.profile.execution_time = new Date(edit.profile.execution_time)
