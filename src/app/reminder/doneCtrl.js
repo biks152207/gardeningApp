@@ -12,14 +12,11 @@
       done.getList = Getlist.bind();
 
       function Getlist(){
-        if (done.infiniteLoading){
-          done.infiniteLoading = false;
+
           $http.get(appUrl + 'reminders/done?page=' + count).success(function(result){
             if (result.data.next_page_url){
-              done.infiniteLoading = true;
               count++
             }else{
-              done.infiniteLoading = false;
             }
             done.loading = false;
             done.lists = done.lists.concat(result.data.data);
@@ -28,7 +25,6 @@
           })
         }
 
-      }
       done.getList();
     }
 
