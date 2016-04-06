@@ -43,7 +43,7 @@
                 count++;
               }
 
-              remind.lists = _.uniq(remind.lists.concat(result.data.data.data);
+              remind.lists = remind.lists.concat(result.data.data.data);
             })
 
         }
