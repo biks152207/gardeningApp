@@ -39,21 +39,18 @@
       vm.selectionFilter = Selection.bind(vm);
       vm.editor = Editor.bind(vm);
       function list(){
-        if (vm.Infiniteloading){
-          vm.Infiniteloading = false;
           GardenService.maintenence(vm.state, count).then(function(response){
             if (!response.data.data.next_page_url){
+              console.log(response.data.data.next_page_url);
               vm.Infiniteloading = false;
-              console.log('ere');
 
             }else{
               count++;
-              vm.Infiniteloading = true;
+              list();
             }
             vm.lists = vm.lists.concat(response.data.data.data);
             vm.loading = false;
           })
-        }
 
       }
 

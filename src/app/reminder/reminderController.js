@@ -31,7 +31,6 @@
       }
 
       function GetList(){
-        if (remind.Infiniteloading){
           remind.Infiniteloading = false;
           $http.get(appUrl + 'reminders?page=' + count)
             .then(function(result){
@@ -39,15 +38,13 @@
               if (!result.data.data.next_page_url){
                 remind.Infiniteloading = false;
               }else{
-                remind.Infiniteloading = true;
+
                 count++;
+                GetList();
               }
 
               remind.lists = remind.lists.concat(result.data.data.data);
             })
-
-        }
-
       }
 
       function Post(data){

@@ -11,7 +11,7 @@
         }
       })
 
-    function Controller(GardenService, $state, toastr, appData, moment, $http, appUrl, lang, $mdDialog){
+    function Controller(GardenService, $state, toastr, appData, moment, $http, appUrl, lang, $mdDialog, $scope){
       var edit = this;
       edit.profile = appData.data;
 
@@ -60,7 +60,7 @@
         }
 
       }
-
+      
       edit.metData();
 
       edit.cancel = function(){

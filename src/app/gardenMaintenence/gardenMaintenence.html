@@ -33,7 +33,7 @@
       <!-- <input type="checkbox" ng-model="selection"     radio-beautify id="maintenance" value="test"> -->
       <!-- <div class="post-title col-md-12"><h3>Gartenunterhalt</h3></div>				 -->
       <form class="form-gardenmaintenance">
-        <div class="form-group" ng-repeat="list in vm.lists track by $index" infinite-scroll="vm.getList()"  infinite-scroll-distance="3" ng-if="list.status=='0'">
+        <div class="form-group" ng-repeat="list in vm.lists | unique: 'id'" ng-if="list.status=='0'">
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
             <input type="checkbox" ng-model="selection" name="checkbox"    radio-beautify="list" data="vm.lists" id="maintenance" value="{{list}}">
           </div>
