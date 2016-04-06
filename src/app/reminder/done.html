@@ -32,7 +32,7 @@
       <form class="form-erinnerung">
         <div class="form-group" ng-repeat="(key, list) in done.lists | unique: 'id'">
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
-            <input type="checkbox" name="maintenance" disabled id="maintenance" radio-check="list" ng-checked="list.status==1" data="done.lists" value="{{list}}" >
+            <input type="checkbox" name="maintenance" disabled enable="true" id="maintenance" radio-check="list" ng-checked="list.status==1" data="done.lists" value="{{list}}" >
           </div>
           <div class="col-md-10 col-sm-10 col-xs-10">
             <input type="text" text="" ng-model="list.title" disabled placeholder="Erinnerung" class="form-control">

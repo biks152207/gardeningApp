@@ -13,12 +13,20 @@
           },
           link: function(scope,element, attr, ngModel){
             $timeout(function () {
+              if (attr.enable){
+                element.screwDefaultButtons({
+                  image: 'url("assets/images/radio-1-checked.png")',
+                  width: 32,
+                  height: 34
+                });
+
+            }else{
               element.screwDefaultButtons({
                 image: 'url("assets/images/radio-2.png")',
                 width: 32,
                 height: 34
               });
-
+            }
             }, 0);
 
             var change = function(id, status){
