@@ -12,7 +12,7 @@
     <div class="row">
       <div class="menu col-md-12">
         <ul>
-          <li class="col-md-4" style="cursor:pointer"><a href="/"><i class="fa fa-angle-left"></i> Zurück</a></li>
+          <li class="col-md-4" style="cursor:pointer"><a onClick="window.history.go(-1); return false;"><i class="fa fa-angle-left"></i> Zurück</a></li>
           <li class="col-md-4 title"><strong>Erinnerung</strong></li>
           <li class="col-md-4" style="cursor:pointer"><a ng-click="remind.goToDone()">Erledigte</a></li>
         </ul>
