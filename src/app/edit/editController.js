@@ -60,7 +60,7 @@
         }
 
       }
-      
+
       edit.metData();
 
       edit.cancel = function(){
@@ -106,17 +106,24 @@
 
 
       function Uploader(file){
-        if (file){
+        if (file == undefined){
+          return;
+        }
+        if (file.length !=0){
           edit.uploadStatus = true;
-          GardenService.uploader(file).then(function(result){
-            edit.uploadStatus = false;
-            // console.log(data);
-            edit.profile.resources.push(result.data.data.name);
-            console.log(edit.profile.resources);
+          for(var i =0; i <= file.length; i++){
+            GardenService.uploader(file[i]).then(function(result){
+              if (i == file.length){
+                edit.uploadStatus = false;
+              }
+              // console.log(data);
+              edit.profile.resources.push(result.data.data.name);
+              edit.profile.thumbs.unshift({thumb: result.data.data.thumb})
 
-          }, function(err){
-            edit.uploadStatus = false;
-          })
+            }, function(err){
+              edit.uploadStatus = false;
+            })
+          }
         }
       }
 

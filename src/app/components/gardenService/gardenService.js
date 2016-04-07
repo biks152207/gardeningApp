@@ -40,6 +40,8 @@
       return $http.get(appUrl + type + '/projects/done');
     }
     this.uploader = function(file){
+      console.log(file);
+      console.log('hello');
       return Upload.upload({
         url: appUrl + 'file/upload',
         data: {

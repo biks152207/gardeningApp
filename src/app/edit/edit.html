@@ -110,13 +110,14 @@
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Zuständigkeit</label>
-              <select class="form-control" name="" ng-options="user.name as user.name for user in edit.users track by $index" ng-model="edit.profile.worker">
+              <select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker" required="">
+                <option value="">auswählen</option>
               </select>
             </div>
 						<div class="col-md-4">
 							<label for="">Wiederholen</label>
-							<select ng-class="{'text-danger':postForm.repeat.$invalid && (postForm.repeat.$dirty || postForm.$submitted)}" class="form-control" name="repeat"   ng-options="rep.name as rep.name for rep in edit.type track by $index" ng-model="edit.profile.repeat" required="">
-
+							<select  class="form-control" name="repeat"   ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat" required="">
+                <option value="">auswählen</option>
 							</select>
 
 						</div>
@@ -154,22 +155,34 @@
 
 					<div class="form-group">
 
-						<div class="col-md-8">
-							<div class="post-upload" ngf-select="edit.upload($file)" ng-model="vm.file" style="cursor:pointer">
-								<span ngf-drop="edit.upload($file)">Drag and Drop Files</span>
+						<div class="col-md-12">
+							<div class="post-upload" ngf-select="edit.upload($files)" multiple="multiple" ng-model="vm.files" style="cursor:pointer">
+								<span ngf-multiple="true" ngf-drop="edit.upload($files)">Drag and Drop Files</span>
 								<i class="fa fa-upload"></i>
 							</div>
 							<md-progress-linear  ng-show="edit.uploadStatus"></md-progress-linear>
 						</div>
-            <div class="col-md-2">
-							<div class="" style="position:relative;display:inline-block">
-								<img ngf-thumbnail="vm.file" class="img-responsive">
+            <!-- <div class="col-md-12" ng-if="vm.files.length > 0" >
+              <h3>Preview</h3>
+              <div class="row">
+                <div class="col-md-2" ng-repeat="data in vm.files">
+    							<div class="" style="position:relative;">
+    								<img ngf-thumbnail="data"  height="100px" width="100px">
+
+    							</div>
+                </div>
+  						</div>
+              <div style="margin-top:10px;"> -->
+
+              <!-- </div> -->
+							<!-- <div class="col-md-2" style="position:relative;display:inline-block" ng-repeat="data in vm.files">
+								<img ngf-thumbnail="data" class="img-responsive">
 								<div class="close" style="position:absolute;right:0px;top:0px;z-index:10;cursor:pointer" ng-click="$file=null" ng-if="vm.file">
 									X
 								</div>
-							</div>
-
-						</div>
+							</div> -->
+<!--
+						</div> -->
 
 					</div>
           <div class="form-group">
