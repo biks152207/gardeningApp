@@ -115,8 +115,10 @@
             </div>
 						<div class="col-md-4">
 							<label for="">Wiederholen</label>
-							<select class="form-control" name=""  ng-options="rep.name as rep.name for rep in edit.type track by $index" ng-model="edit.profile.repeat">
+							<select ng-class="{'text-danger':postForm.repeat.$invalid && (postForm.repeat.$dirty || postForm.$submitted)}" class="form-control" name="repeat"   ng-options="rep.name as rep.name for rep in edit.type track by $index" ng-model="edit.profile.repeat" required="">
+
 							</select>
+
 						</div>
 						<!-- <div class="col-md-4">
 							<label for="">Type</label>
