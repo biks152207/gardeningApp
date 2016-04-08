@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="logo inside col-md-12">
-        <a href="/"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
+        <a ui-sref="home"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@
     </div>
   </div>
 </section>
+
 <section class="form">
   <div class="container">
     <div class="row" ng-if="remind.loading" >
@@ -37,7 +38,7 @@
             <input type="checkbox"   radio-check="list"  ng-checked="list.status==1" data="remind.lists" name="maintenance" id="maintenance" value="{{list}}" >
           </div>
           <div class="col-md-10 col-sm-11 col-xs-10">
-            <input type="text" text="" placeholder="Erinnerung" ng-model="list.title" class="form-control">
+            <input type="text" text="" disabled placeholder="Erinnerung" ng-model="list.title" class="form-control">
           </div>
         </div>
 

@@ -14,7 +14,7 @@
     function Controller(GardenService, $state, toastr, appData, moment, $http, appUrl, lang, $mdDialog, $scope){
       var edit = this;
       edit.profile = appData.data;
-
+      edit.submitting = false;
       edit.lang = lang.get();
       if (appData.type == 'gartenumaenderung'){
         edit.header = 'Gartenumänderung';
@@ -38,6 +38,7 @@
       edit.format = edit.formats[0];
       edit.submit = function(validity, form){
         if (validity){
+          edit.submitting = true;
           var url = null;
           if (edit.profile.id){
             url = appUrl + 'project/'+ edit.profile.id;
@@ -53,7 +54,10 @@
                 form.$setPristine(true)
                 toastr.info(lang.get().add_success);
               }
+              edit.submitting = false;
+
             }
+            edit.submitting = false;
           })
         }else{
           $(document).scrollTop()
@@ -111,18 +115,19 @@
         }
         if (file.length !=0){
           edit.uploadStatus = true;
-          for(var i =0; i <= file.length; i++){
-            GardenService.uploader(file[i]).then(function(result){
-              if (i == file.length){
-                edit.uploadStatus = false;
-              }
-              // console.log(data);
-              edit.profile.resources.push(result.data.data.name);
-              edit.profile.thumbs.unshift({thumb: result.data.data.thumb})
+          for(var i =0; i < file.length; i++){
+            if (file && file[i]){
+              GardenService.uploader(file[i]).then(function(result){
+                if (i == file.length){
+                  edit.uploadStatus = false;
+                }
+                edit.profile.resources.push(result.data.data.name);
+                edit.profile.thumbs.unshift({thumb: result.data.data.thumb, client_name:result.data.data.client_name})
 
-            }, function(err){
-              edit.uploadStatus = false;
-            })
+              }, function(err){
+                edit.uploadStatus = false;
+              })
+            }
           }
         }
       }

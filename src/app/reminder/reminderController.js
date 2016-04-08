@@ -31,12 +31,10 @@
       }
 
       function GetList(){
-          remind.Infiniteloading = false;
           $http.get(appUrl + 'reminders?page=' + count)
             .then(function(result){
               remind.loading = false;
               if (!result.data.data.next_page_url){
-                remind.Infiniteloading = false;
               }else{
 
                 count++;

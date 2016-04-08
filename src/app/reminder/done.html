@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="logo inside col-md-12">
-        <a href="/"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
+        <a ui-sref="home"><img src="assets/images/logo-muller-small.png" alt="" class="img-responsive"></a>
       </div>
     </div>
   </div>
@@ -17,6 +17,18 @@
 
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+<section class="search">
+  <div class="container">
+    <div class="row">
+      <form action="" class="form-inline form-search col-md-offset-1 col-md-10 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <input ng-model="done.searchTerm" type="text" class="form-control" id="" placeholder="Suche" ng-change="done.search(done.searchTerm)">
+          <button style="top:0px" type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+        </div>
+      </form>
     </div>
   </div>
 </section>

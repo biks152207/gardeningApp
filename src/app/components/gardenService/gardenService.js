@@ -36,12 +36,16 @@
       return $http.get(appUrl + 'project/meta-data')
     }
 
-    this.getDoneList = function(type){
-      return $http.get(appUrl + type + '/projects/done');
+    this.getDoneList = function(type,searchTerm){
+      if (searchTerm){
+        q = searchTerm;
+      }else{
+        q = '';
+      }
+      return $http.get(appUrl + type + '/projects/done?q='+q);
     }
     this.uploader = function(file){
-      console.log(file);
-      console.log('hello');
+
       return Upload.upload({
         url: appUrl + 'file/upload',
         data: {
