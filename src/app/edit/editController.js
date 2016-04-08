@@ -21,6 +21,10 @@
       }else{
         edit.header = 'Gartenunterhalt';
       }
+      if (!edit.profile.resources){
+        edit.profile.resources = [];
+        edit.profile.thumbs = [];
+      }
       if (edit.profile && edit.profile.type){
         delete edit.profile.type;
       }
@@ -53,6 +57,9 @@
                 $('#postForm')[0].reset();
                 form.$setPristine(true)
                 toastr.info(lang.get().add_success);
+                edit.profile = {};
+                edit.profile.resources = [];
+                edit.profile.thumbs = [];
               }
               edit.submitting = false;
 
@@ -86,8 +93,6 @@
           clickOutsideToClose:true,
           fullscreen: true
         }).then(function(){
-
-          console.log(index);
 
           edit.profile.resources.splice(index, 1);
           edit.profile.thumbs.forEach(function(i, t){

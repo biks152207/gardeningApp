@@ -33,7 +33,6 @@
         templateUrl: 'app/edit/edit.html',
         resolve:{
           appData: function(GardenService, $stateParams, toastr, $q, $location){
-            console.log('hi');
             var defer = $q.defer();
             var obj = {
               type: 'gartenunterhalt'
@@ -57,7 +56,8 @@
         resolve:{
           appData: function(){
             return {
-              type: 'gartenumaenderung'
+              type: 'gartenumaenderung',
+              data: {}
             }
           }
         }
@@ -70,7 +70,8 @@
         resolve:{
           appData: function(){
             return {
-              type: 'gartenunterhalt'
+              type: 'gartenunterhalt',
+              data: {}
             }
           }
         }
