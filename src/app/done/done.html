@@ -48,10 +48,10 @@
         <div class="post-title col-md-12" ng-if="list.projects.length > 0"><h3>{{list.year}}</h3></div>
         <div class="form-group" ng-repeat="l in list.projects">
           <div class="post-icons col-md-1 col-sm-2 col-xs-2">
-            <input type="checkbox" ng-checked="l.status==1"   radio-beautify="l" data="list.projects" name="maintenance" id="maintenance" value="{{l}}" >
+            <input type="checkbox" disabled enable="true" ng-checked="l.status==1"   radio-beautify="l" data="list.projects" name="maintenance" id="maintenance" value="{{l}}" >
           </div>
           <div class="col-md-10 col-sm-10 col-xs-10">
-            <textarea name="maintenancedetails" id="maintenancedetails" disabled class="form-control" >{{l.firstname + ' ' + l.lastname + ',' + l.address}}</textarea>
+            <textarea name="maintenancedetails" id="maintenancedetails" disabled class="form-control" >{{l.firstname + ' ' + l.lastname + ', ' + l.address + ', ' + l.place + ', '  +  done.convert(l.created_at) + ', ' + l.worker}}</textarea>
           </div>
         </div>
         <hr class="col-md-offset-1 col-md-10">

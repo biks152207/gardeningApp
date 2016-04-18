@@ -1,3 +1,9 @@
+<style>
+  .add_to{
+    background-color:#fba5aa !important;
+  }
+</style>
+
 <section class="mainheader">
   <div class="container">
     <div class="row">
@@ -23,22 +29,17 @@
 </section>
 <section class="form">
   <div class="container">
-    <div class="row" ng-if="vm.loading" >
-      <div class="col-md-12" style="text-align:center;">
-        <i class="fa fa-circle-o-notch fa-spin fa-3x">
-        </i>
-      </div>
-    </div>
     <div class="row">
       <!-- <input type="checkbox" ng-model="selection"     radio-beautify id="maintenance" value="test"> -->
       <!-- <div class="post-title col-md-12"><h3>Gartenunterhalt</h3></div>				 -->
-      <form class="form-gardenmaintenance">
-        <div class="form-group" ng-repeat="list in vm.lists | unique: 'id'" ng-if="list.status=='0'">
+      <form class="form-gardenmaintenance" infinite-scroll="vm.getList()" infinite-scroll-disabled="vm.disableScroll" infinite-scroll-distance="4">
+        <div class="form-group" ng-repeat="list in vm.lists | unique:'id'" ng-if="list.status=='0'">
+
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
             <input type="checkbox" ng-model="selection" name="checkbox"    radio-beautify="list" data="vm.lists" id="maintenance" value="{{list}}">
           </div>
-          <div class="col-md-10 col-sm-10 col-xs-8">
-            <textarea name="maintenancedetails" disabled id="maintenancedetails" class="form-control" disabled="disabled">{{list.firstname + ' ' + list.lastname + ',' + list.address}}</textarea>
+          <div class="col-md-10 col-sm-10 col-xs-8" ng-dblclick="vm.dblclick(list)" >
+            <textarea   name="maintenancedetails" ng-class="{'add_to':list.added_to_calender == 1}" disabled id="maintenancedetails" class="form-control" disabled="disabled">{{list.firstname + ' ' + list.lastname + ', ' + list.address + ', ' + list.place + ', '  +  vm.convert(list.created_at) + ', ' + list.worker}}</textarea>
           </div>
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
             <img src="assets/images/icon-edit.png" alt="" class="img-responsive" ng-click="vm.editor(list.id)">
@@ -112,10 +113,11 @@
       </form>
 
     </div>
-    <div class="row" ng-if="vm.Infiniteloading">
-      <div layout="row" layout-sm="column" layout-align="space-around">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-      </div>
+      <div class="row" ng-if="!vm.disableScroll || vm.loading" >
+        <div class="col-md-12" style="text-align:center;">
+          <i class="fa fa-circle-o-notch fa-spin fa-3x">
+          </i>
+        </div>
     </div>
   </div>
 </div>
@@ -126,5 +128,8 @@
   }
   .md-progress-circular{
     margin: 0 auto;
+  }
+  .add_to{
+    background:#fba5aa;
   }
 </style>

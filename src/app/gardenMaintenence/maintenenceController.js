@@ -5,11 +5,11 @@
 
     /** @ngInject */
 
-    function Maintenence(GardenService, toastr, $state, $location, lang){
+    function Maintenence(GardenService, toastr, $state, $location, lang, $mdDialog, $http, appUrl, $filter){
       var vm = this;
       vm.lists = [];
       var count = 0;
-      vm.Infiniteloading = true;
+      // vm.Infiniteloading = true;
       // var pageLimit = null;
       var location = $location.$$absUrl
       var type = location.substring(location.lastIndexOf('/'),location.length )
@@ -20,6 +20,29 @@
       // vm.checked = function(value,obj){
       //   console.log(value);
       // }
+      vm.convert = function(data){
+        return moment(data).format('DD.MM.YYYY');
+      }
+      vm.dblclick = function(list){
+        if (list.added_to_calender == 0){
+          $mdDialog.show({
+            controller: 'DialogController',
+            templateUrl: 'app/gardenMaintenence/dialog1.html',
+            clickOutsideToClose:true,
+            fullscreen: true
+          })
+          .then(function(answer) {
+            $http.get(appUrl+ 'project/' + list.id + '/add-calender').then(function(res){
+              list.added_to_calender = 1;
+            })
+            // $scope.status = 'You said the information was "' + answer + '".';
+          }, function() {
+            // $scope.status = 'You cancelled the dialog.';
+          });
+      }
+    }
+
+
       vm.addGarden = function(){
         if (type == '/gartenumaenderung'){
           $state.go('addGartenumaenderung')
@@ -39,18 +62,22 @@
       vm.selectionFilter = Selection.bind(vm);
       vm.editor = Editor.bind(vm);
       function list(){
+        if (!vm.disableScroll){
+          vm.disableScroll = true;
           GardenService.maintenence(vm.state, count).then(function(response){
-            if (!response.data.data.next_page_url){
-              console.log(response.data.data.next_page_url);
-              vm.Infiniteloading = false;
+            console.log(response.data.data)
+            if (response.data.data.next_page_url == null){
+              vm.disableScroll = true;
 
             }else{
               count++;
-              list();
+              vm.disableScroll = false;
+
             }
             vm.lists = vm.lists.concat(response.data.data.data);
             vm.loading = false;
           })
+        }
 
       }
 

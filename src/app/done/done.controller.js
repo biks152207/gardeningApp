@@ -10,6 +10,9 @@
       done.getList = Getlist.bind(done);
       // done.search = Filter.bind(done);
       // console.log(appData);
+      done.convert = function(data){
+        return moment(data).format('DD.MM.YYYY');
+      }
 
       done.getList();
       function Getlist(){

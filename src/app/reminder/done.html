@@ -41,7 +41,7 @@
     </div>
     <div class="row">
       <!-- <div class="post-title col-md-12"><h3>Gartenunterhalt</h3></div>				 -->
-      <form class="form-erinnerung">
+      <form class="form-erinnerung" infinite-scroll="done.getList()" infinite-scroll-disabled="done.disableInfiniteScroll" infinite-scroll-distance="1">
         <div class="form-group" ng-repeat="(key, list) in done.lists | unique: 'id'">
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
             <input type="checkbox" name="maintenance" disabled enable="true" id="maintenance" radio-check="list" ng-checked="list.status==1" data="done.lists" value="{{list}}" >

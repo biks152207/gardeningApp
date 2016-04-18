@@ -40,6 +40,11 @@
       edit.upload = Uploader.bind(edit);
       edit.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
       edit.format = edit.formats[0];
+      edit.fileDownload = function(name){
+        $http.get(appUrl+ 'file/download/' + 'ExP6Z4c7pQ.3gpp').then(function(data){
+          console.log(typeof (data.data));
+        })
+      }
       edit.submit = function(validity, form){
         if (validity){
           edit.submitting = true;

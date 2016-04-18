@@ -6,6 +6,6 @@
     .module('gardeningApp')
     .constant('malarkey', malarkey)
     .constant('moment', moment)
-    .constant('appUrl', 'http://slctn.us/garden/public/api/');
+    .constant('appUrl', 'http://mueller-gartengestaltung.ch/server/public/api/');
 
 })();

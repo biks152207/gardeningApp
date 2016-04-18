@@ -84,8 +84,8 @@
 							</span>
 						</div>
 						<div class="col-md-4">
-							<label for="">Ausführungs-zeitpunkt </label>
-							<md-datepicker   ng-model="edit.profile.execution_time" md-placeholder="Enter date"></md-datepicker>
+							<label for="">Ausführungszeitpunkt </label>
+							<md-datepicker   ng-model="edit.profile.execution_time" md-placeholder="auswählen"></md-datepicker>
 						</div>
 						<div class="col-md-4">
 							<label for="" style="width:100%">Arbeitsaufwand</label>
@@ -137,15 +137,9 @@
 						</div>
 						<div class="col-md-6">
 							<label for="">&nbsp;</label>
-							<div map-lazy-load="https://maps.google.com/maps/api/js">
-							  <ng-map center="{{edit.profile.address + ' ' + edit.profile.postal_code + ' ' + edit.profile.city}}" zoom="13" >
-                  <directions
-          draggable="true"
-          panel="directions-panel"
-          travel-mode="DRIVING"
-          origin="{{edit.profile.address + ' ' + edit.profile.postal_code + ' ' + edit.profile.city}}"
-        >
-        </directions>
+							<div  map-lazy-load="https://maps.google.com/maps/api/js">
+							  <ng-map center="{{edit.profile.address  + ',' + edit.profile.place + ',' + edit.profile.postal_code}}" zoom="20" >
+
 								</ng-map>
 							</div>
 
@@ -188,14 +182,14 @@
           <div class="form-group" vertilize-container>
 						<div class="col-md-3" ng-repeat="l in edit.profile.thumbs track by $index">
 							<div class="" style="position:relative;" vertilize>
-								<img ng-src="{{l.thumb}}"  class="img-responsive" style="min-width:100%">
+								<a download href="{{'http://mueller-gartengestaltung.ch/server/public/api/file/download/' + l.client_name}}"><img ng-src="{{l.thumb}}"  class="img-responsive" style="min-width:100%"></a>
 								<span style="postion:absolute;top:0px;right:0px;z-index:2; position:absolute" ng-click="edit.imageDelete($index, l.name)">
                   X
 								</span>
-                <div style="word-break: break-all">
+                <a download href="{{'http://mueller-gartengestaltung.ch/server/public/api/file/download/' + l.client_name}}" style="word-break: break-all">
 
                   {{l.client_name}}
-                </div>
+                </a>
 							</div>
 						</div>
 					</div>
@@ -203,7 +197,7 @@
 
 					</div>
 
-					<div class="col-md-12 btn-holder"><button type="submit"  class="btn btn-green"><i class="fa fa-circle-o-notch fa-spin" ng-if="edit.submitting"></i> Submit</button></div>
+					<div class="col-md-12 btn-holder"><button type="submit"  class="btn btn-green"><i class="fa fa-circle-o-notch fa-spin" ng-if="edit.submitting"></i>speichern</button></div>
 
 				</form>
 			</div>

@@ -49,7 +49,7 @@
                   var msg = null;
                   if (obj.status == 0){
                     change(obj.id, 1);
-                    msg = lang.get().active_success
+                    msg = 'Erledigt';
                   }else{
                     change(obj.id, 0);
                     msg = lang.get().inactive_success
@@ -73,13 +73,22 @@
         },
         link: function(scope,element, attr, ngModel){
           $timeout(function () {
+            if (attr.enable){
+              element.screwDefaultButtons({
+                image: 'url("assets/images/radio-1-checked.png")',
+                width: 32,
+                height: 34
+              });
+
+          }else{
             element.screwDefaultButtons({
               image: 'url("assets/images/radio-2.png")',
               width: 32,
-              height: 33
+              height: 34
             });
-
+          }
           }, 0);
+
 
           var change = function(id, status){
             scope.data.filter(function(Data){
@@ -101,7 +110,7 @@
                 var msg = null;
                 if (obj.status == 0){
                   change(obj.id, 1);
-                  msg = lang.get().active_success
+                  msg = 'Erledigt';
                 }else{
                   change(obj.id, 0);
                   msg = lang.get().inactive_success
