@@ -20,8 +20,34 @@
       // vm.checked = function(value,obj){
       //   console.log(value);
       // }
-      vm.convert = function(data){
-        return moment(data).format('DD.MM.YYYY');
+      vm.convert = function(due_date, created){
+        // console.log(data);
+        if (due_date){
+          return moment(due_date).format('DD.MM.YYYY');
+          return;
+        }
+        return moment(created).format('DD.MM.YYYY');
+
+      }
+      vm.goBack = function(){
+        $state.go('home');
+      }
+
+      vm.generator = function(list){
+        var detail = '';
+        if (list.firstname){
+          detail += list.firstname + ', ';
+        }
+        if (list.lastname){
+          detail += list.lastname + ', ';
+        }
+        if (list.address){
+          detail += list.address + ', ';
+        }
+        if (list.place){
+          detail += list.place + ', ';
+        }
+        return detail;
       }
       vm.dblclick = function(list){
         if (list.added_to_calender == 0){
@@ -65,7 +91,6 @@
         if (!vm.disableScroll){
           vm.disableScroll = true;
           GardenService.maintenence(vm.state, count).then(function(response){
-            console.log(response.data.data)
             if (response.data.data.next_page_url == null){
               vm.disableScroll = true;
 

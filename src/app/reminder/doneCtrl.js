@@ -29,7 +29,6 @@
             q = ''
           }
           $http.get(appUrl + 'reminders/done?page=' + count+ '&q='+ q).success(function(result){
-            console.log(result);
             if (result.data.next_page_url){
               count++
               done.disableInfiniteScroll = false;

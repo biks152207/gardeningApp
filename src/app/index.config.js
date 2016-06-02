@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig,  $locationProvider) {
+  function config($logProvider, toastrConfig,  $locationProvider, $mdDateLocaleProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -16,6 +16,7 @@
     toastrConfig.timeOut = 3000;
     toastrConfig.positionClass = 'toast-top-right';
     toastrConfig.preventDuplicates = false;
+
     toastrConfig.progressBar = true;
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('!');

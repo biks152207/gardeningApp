@@ -27,7 +27,7 @@
 					<div class="form-group">
 						<div class="col-md-4" >
 							<label for="">Name</label>
-							<input type="text" name="lastName" class="form-control" ng-model="edit.profile.lastname" placeholder="Name" required ng-minlength="2"  ng-maxlength="20">
+							<input type="text" name="lastName" class="form-control" ng-model="edit.profile.lastname" placeholder="Name" ng-minlength="2"  ng-maxlength="20">
 							<span class="text-danger" ng-if="postForm.lastName.$invalid && (postForm.lastName.$dirty || postForm.$submitted)">
                 <p ng-if="postForm.lastName.$error.minlength">{{edit.lang.less_character}}</p>
 								<p ng-if="postForm.lastName.$error.required">{{edit.lang.enter_name}}</p>
@@ -36,7 +36,7 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Vorname</label>
-							<input type="text" name="firstName" class="form-control" id="" ng-model="edit.profile.firstname" placeholder="Vorname" required  ng-maxlength="20">
+							<input type="text" name="firstName" class="form-control" id="" ng-model="edit.profile.firstname" placeholder="Vorname"   ng-maxlength="20">
 							<span class="text-danger" ng-if="postForm.firstName.$invalid && (postForm.firstName.$dirty || postForm.$submitted)">
 								<p ng-if="postForm.firstName.$error.required">{{edit.lang.enter_first}}</p>
 								<p ng-if="postForm.firstName.$error.maxlength">{{edit.lang.more_character}}</p>
@@ -44,7 +44,7 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Adresse</label>
-							<input type="text" class="form-control" name="address" required id="" ng-model="edit.profile.address" placeholder="Adresse">
+							<input type="text" class="form-control" name="address" id="" ng-model="edit.profile.address" placeholder="Adresse">
 							<span class="text-danger" ng-if="postForm.address.$invalid && (postForm.address.$dirty|| postForm.$submitted)">
 								<p ng-if="postForm.address.$error.required">{{edit.lang.enter_address}}</p>
 							</span>
@@ -53,7 +53,7 @@
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Postleitzahl</label>
-							<input type="text" ng-model="edit.profile.postal_code" required name="postal_code" ng-pattern="/^\d+$/" class="form-control" id="" placeholder="Postleitzahl">
+							<input type="text" ng-model="edit.profile.postal_code"  name="postal_code" ng-pattern="/^\d+$/" class="form-control" id="" placeholder="Postleitzahl">
 							<span class="text-danger" ng-if="postForm.postal_code.$invalid && (postForm.postal_code.$dirty || postForm.$submitted)">
 								<p ng-if="postForm.postal_code.$error.pattern">{{edit.lang.invalid_postal}}</p>
 								<p ng-if="postForm.postal_code.$error.required">{{edit.lang.enter_postal}}</p>
@@ -68,7 +68,7 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Telefon <img src="assets/images/icon-phone.png"></label>
-							<input type="text" name="telephone" class="form-control"  required id="" ng-model="edit.profile.phone" placeholder="Telefon">
+							<input type="text" name="telephone" class="form-control"   id="" ng-model="edit.profile.phone" placeholder="Telefon">
 							<span class="text-danger" ng-if="postForm.telephone.$invalid && (postForm.telephone.$dirty || postForm.$submitted)">
 								<p ng-if="postForm.telephone.$error.required">{{edit.lang.enter_phone}}</p>
 							</span>
@@ -77,7 +77,7 @@
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Email</label>
-							<input type="text" name="email" ng-pattern="/^[a-zA-Z][-.\w]+\@[-\w]+(?:\.[a-z]+)?\.[a-z]{2,}/" required class="form-control" id="" ng-model="edit.profile.mail" placeholder="Email">
+							<input type="text" name="email" ng-pattern="/^[a-zA-Z][-.\w]+\@[-\w]+(?:\.[a-z]+)?\.[a-z]{2,}/"  class="form-control" id="" ng-model="edit.profile.mail" placeholder="Email">
 							<span class="text-danger" ng-if="postForm.email.$invalid && (postForm.email.$dirty || postForm.$submitted)">
 								<p ng-if="postForm.email.$error.pattern">{{edit.lang.invalid_email}}</p>
 								<p ng-if="postForm.email.$error.required">{{edit.lang.enter_email}}</p>
@@ -85,7 +85,7 @@
 						</div>
 						<div class="col-md-4">
 							<label for="">Ausführungszeitpunkt </label>
-							<md-datepicker   ng-model="edit.profile.execution_time" md-placeholder="auswählen"></md-datepicker>
+							<md-datepicker   ng-model="edit.profile.execution_time" datepicker-timezone md-placeholder="auswählen"></md-datepicker>
 						</div>
 						<div class="col-md-4">
 							<label for="" style="width:100%">Arbeitsaufwand</label>
@@ -110,13 +110,13 @@
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="">Zuständigkeit</label>
-              <select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker" required="">
+              <select class="form-control" name="" ng-options="user.name as user.name for user in edit.users" ng-model="edit.profile.worker" >
                 <option value="">auswählen</option>
               </select>
             </div>
 						<div class="col-md-4">
 							<label for="">Wiederholen</label>
-							<select  class="form-control" name="repeat"   ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat" required="">
+							<select  class="form-control" name="repeat"   ng-options="rep.name as rep.name for rep in edit.type" ng-model="edit.profile.repeat" >
                 <option value="">auswählen</option>
 							</select>
 
@@ -182,12 +182,11 @@
           <div class="form-group" vertilize-container>
 						<div class="col-md-3" ng-repeat="l in edit.profile.thumbs track by $index">
 							<div class="" style="position:relative;" vertilize>
-								<a download href="{{'http://mueller-gartengestaltung.ch/server/public/api/file/download/' + l.client_name}}"><img ng-src="{{l.thumb}}"  class="img-responsive" style="min-width:100%"></a>
+								<a download href="{{'http://mueller-gartengestaltung.ch/server/public/api/file/download/' + l.name}}"><img ng-src="{{l.thumb}}"  class="img-responsive" style="min-width:100%"></a>
 								<span style="postion:absolute;top:0px;right:0px;z-index:2; position:absolute" ng-click="edit.imageDelete($index, l.name)">
                   X
 								</span>
-                <a download href="{{'http://mueller-gartengestaltung.ch/server/public/api/file/download/' + l.client_name}}" style="word-break: break-all">
-
+                <a download href="{{'http://mueller-gartengestaltung.ch/server/public/api/file/download/' + l.name}}" style="word-break: break-all">
                   {{l.client_name}}
                 </a>
 							</div>

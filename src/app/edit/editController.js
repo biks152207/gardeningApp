@@ -14,7 +14,9 @@
     function Controller(GardenService, $state, toastr, appData, moment, $http, appUrl, lang, $mdDialog, $scope){
       var edit = this;
       edit.profile = appData.data;
+      var date = new Date();
       edit.submitting = false;
+
       edit.lang = lang.get();
       if (appData.type == 'gartenumaenderung'){
         edit.header = 'Gartenumänderung';
@@ -42,7 +44,6 @@
       edit.format = edit.formats[0];
       edit.fileDownload = function(name){
         $http.get(appUrl+ 'file/download/' + 'ExP6Z4c7pQ.3gpp').then(function(data){
-          console.log(typeof (data.data));
         })
       }
       edit.submit = function(validity, form){

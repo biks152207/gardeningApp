@@ -18,7 +18,7 @@
     <div class="row">
       <div class="menu col-md-12">
         <ul>
-          <li class="col-md-4" style="cursor:pointer"><a onClick="window.history.go(-1); return false;"><i class="fa fa-angle-left"></i> Zurück</a></li>
+          <li class="col-md-4" style="cursor:pointer"><a ng-click="vm.goBack();"><i class="fa fa-angle-left"></i> Zurück</a></li>
           <li class="col-md-4 title" ng-if="vm.state=='gartenunterhalt'"><strong>Gartenunterhalt</strong></li>
           <li class="col-md-4 title" ng-if="vm.state=='gartenumaenderung'"><strong>Gartenumänderung</strong></li>
           <li class="col-md-4" style="cursor:pointer"><a ng-click="vm.goDone()">Erledigte</a></li>
@@ -39,7 +39,7 @@
             <input type="checkbox" ng-model="selection" name="checkbox"    radio-beautify="list" data="vm.lists" id="maintenance" value="{{list}}">
           </div>
           <div class="col-md-10 col-sm-10 col-xs-8" ng-dblclick="vm.dblclick(list)" >
-            <textarea   name="maintenancedetails" ng-class="{'add_to':list.added_to_calender == 1}" disabled id="maintenancedetails" class="form-control" disabled="disabled">{{list.firstname + ' ' + list.lastname + ', ' + list.address + ', ' + list.place + ', '  +  vm.convert(list.created_at) + ', ' + list.worker}}</textarea>
+            <textarea   name="maintenancedetails" ng-class="{'add_to':list.added_to_calender == 1}" disabled id="maintenancedetails" class="form-control" disabled="disabled">{{vm.generator(list) +  vm.convert(list.due_date, list.execution_time) + ', ' + list.worker}}</textarea>
           </div>
           <div class="post-icons col-md-1 col-sm-1 col-xs-2">
             <img src="assets/images/icon-edit.png" alt="" class="img-responsive" ng-click="vm.editor(list.id)">
